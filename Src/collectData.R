@@ -30,7 +30,7 @@ for(i in 1:length(listOfFilesLong)){
   names(listOfFilesLong[[i]]) <- c("Patient", "Sample", namesOfFiles[i])
 }
 
-df <- cbind(listOfFilesLong[[1]][c(1,2)], do.call(cbind.data.frame, lapply(listOfFilesLong, function(x) x[3])))
+df_pre_tum <- cbind(listOfFilesLong[[1]][c(1,2)], do.call(cbind.data.frame, lapply(listOfFilesLong, function(x) x[3])))
 
 # 2nd set of data
 path <- "./Data/NK activation/PB_pre vs PB_post/"
@@ -62,4 +62,4 @@ for(i in 1:length(listOfFilesLong)){
   names(listOfFilesLong[[i]]) <- c("Patient", "Sample", namesOfFiles[i])
 }
 
-df <- cbind(listOfFilesLong[[1]][c(1,2)], do.call(cbind.data.frame, lapply(listOfFilesLong, function(x) x[3])))
+df_pre_post <- cbind(listOfFilesLong[[1]][c(1,2)], do.call(cbind.data.frame, lapply(listOfFilesLong, function(x) x[3])))
