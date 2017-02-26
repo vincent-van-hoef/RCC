@@ -12,6 +12,11 @@ columnCheck(listOfFiles)
 rowCheck(listOfFiles)
 nameCheck(listOfFiles)
 
+# Rename
+for(i in 1:length(listOfFiles)){
+  names(listOfFiles[[i]]) <- c("X", "PB.pre", "Tumor")
+}
+
 # Clean up names and collecct to assign to the files in long format
 namesOfFiles <- list.files(path=path, pattern = "*.csv")
 namesOfFiles <- spaceToUnderscore(namesOfFiles)
@@ -47,6 +52,7 @@ for(i in 1:length(listOfFiles)){
 namesOfFiles <- list.files(path=path, pattern = "*.csv")
 namesOfFiles <- spaceToUnderscore(namesOfFiles)
 namesOfFiles <- removePattern(namesOfFiles, pattern="_PB_pre_post.csv")
+namesOfFiles <- removePattern(namesOfFiles, pattern="_pre_post.csv")
 
 # define function to convert from wide to long format
 listOfFilesLong <- lapply(listOfFiles, tidyData)
