@@ -4,9 +4,7 @@ library(WriteXLS)
 
 # Import data files and store in a list
 listOfFiles <- lapply(list.files(path="./Data/NK activation/PB_pre vs Tum/", pattern="*.csv", full.names = TRUE), function(x) read.csv2(x, sep=",", dec = "."))
-# Check names
-#lapply(listOfFiles, names)
-# Collect names of files and modify into appropriate measurement names
+
 namesOfFiles <- list.files(pattern = "*.csv")
 varNames <- gsub(" ", "_", namesOfFiles)
 varNames <- gsub("_PB_tum.csv", "", varNames)
