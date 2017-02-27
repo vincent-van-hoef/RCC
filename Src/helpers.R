@@ -1,7 +1,7 @@
 # Do all files in a list of files have the same number of columns? If not, stop script.
 columnCheck <- function(x){
   col <- sapply(x, function(y) dim(y)[2])
-  if(all.equal(min(col), max(col))){
+  if(identical(min(col), max(col))){
     print("All files have the same number of columns")
   } else 
     {
@@ -11,8 +11,8 @@ columnCheck <- function(x){
 
 # Do all files in a list of files have the same number of rows?  If not, stop script.
 rowCheck <- function(x){
-  col <- sapply(x, function(y) dim(y)[1])
-  if(all.equal(min(col), max(col))){
+  row <- sapply(x, function(y) dim(y)[1])
+  if(identical(min(row), max(row))){
     print("All files have the same number of rows")
   } else 
   {

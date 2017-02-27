@@ -3,7 +3,11 @@ library(tidyr)
 library(WriteXLS)
 
 # 1st set of data
-path <- "./Data/NK activation/PB_pre vs Tum/"
+path1 <- "./Data/R/NK activation/PB_pre vs Tum/"
+path2 <- "./Data/R/NK and T cells/PB_pre vs Tumor/"
+path3 <- "./Data/R/Chemokine receptors/PB_pre vs Tumor/"
+
+path <- c(path1,path2,path3)
 # Import data files and store in a list
 listOfFiles <- lapply(list.files(path=path, pattern="*.csv", full.names = TRUE), function(x) read.csv2(x, sep=",", dec = "."))
 
@@ -21,6 +25,7 @@ for(i in 1:length(listOfFiles)){
 namesOfFiles <- list.files(path=path, pattern = "*.csv")
 namesOfFiles <- spaceToUnderscore(namesOfFiles)
 namesOfFiles <- removePattern(namesOfFiles, pattern="_PB_tum.csv")
+namesOfFiles <- removePattern(namesOfFiles, pattern="_PB-Tum.csv")
 
 # define function to convert from wide to long format
 listOfFilesLong <- lapply(listOfFiles, tidyData)
@@ -65,7 +70,10 @@ for(i in 1:length(listOfFilesLong)){
 df_pre_post <- cbind(listOfFilesLong[[1]][c(1,2)], do.call(cbind.data.frame, lapply(listOfFilesLong, function(x) x[3])))
 
 # 3d set of data
-path <- "./Data/NK activation/Tumor/"
+path1 <- "./Data/R//NK activation/Tumor/"
+path2 <- "./Data/R/Chemokine receptors/Tumor/"
+
+path <- c(path1, path2)
 # Import data files and store in a list
 listOfFiles <- lapply(list.files(path=path, pattern="*.csv", full.names = TRUE), function(x) read.csv2(x, sep=",", dec = "."))
 
