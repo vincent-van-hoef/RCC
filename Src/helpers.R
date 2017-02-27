@@ -21,7 +21,7 @@ rowCheck <- function(x){
 }
 # Do all files in a list of files have the same names? Return names.
 nameCheck <- function(x){
-  tmp <- sapply(x, names)
+  tmp <- unlist(sapply(x, names))
   return(unique(as.character(tmp)))
 }
 
